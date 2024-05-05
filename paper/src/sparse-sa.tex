@@ -1,0 +1,59 @@
+Per \citet{zaheer2020big},
+recall the definition for a \emph{generalized attention mechanism}
+and a \emph{sparse attention mechanism}.
+
+\begin{definition}[Generalized Attention Mechanism]
+  $ \textsc{Attn}_D\colon \mathbb{R}^{n\times d}
+  \to \mathbb{R}^{n\times n} $
+  is a generalized attention mechanism 
+  if it can be characterized by a digraph 
+  $ D = ([n] = \left\{ 1, \cdots, n \right\}, E_D) $
+  where $ e_{ij} \in E_D $ if $ v_i $ attends $ v_j $.
+  The attention scores for $ \mathbf{x}_i $ with $ H $ heads
+  is
+  \begin{flalign*}
+    \textsc{Attn}_D(\mathbf{X})_{i}
+    &= \mathbf{x}_i
+    + \sum_{h=1}^{H} \textrm{softmax} \left(
+      Q_h(\mathbf{x}_i)
+      K_h(\mathbf{X}_{N(i)})^\top
+    \right)
+    \cdot V_h(\mathbf{X}_{N(i)})
+  \end{flalign*}
+
+  where $ N(i) = \left\{ j\colon e_{ij} \in E_D \right\}$
+  denotes the nodes that $ i $ attends to,
+  $ \mathbf{X}_{N(i)} $ the submatrix
+  of $ \mathbf{X} $ with columns in $ N(i) $,
+  $ Q_h, K_h \colon \mathbb{R}^d \to \mathbb{R}^m $
+  the query and key functions,
+  and 
+  $ V_h\colon \mathbb{R}^d \to \mathbb{R}^d $
+  the value function.
+\end{definition}
+
+\begin{definition}[Sparse Attention Mechanism]
+  We say the attention mechanism
+  $ \textsc{Attn}_D $ is \emph{sparse} if
+  $ |E_D| \in o(n^2) $,
+  and more specifically $ \textsc{Attn}_D $
+  is linear if $ |E_D| \in \mathcal{O}(n) $.
+\end{definition}
+
+Approaches to find $ D $ satisfying sparsity
+typically follow graph-theoretic approaches
+(e.g. expander graphs for expander attention
+in \textsc{Exphormer}),
+yielding desirable properties.
+Most importantly,
+sparse SA mechanisms can be universal approximators,
+preserving the properties of full quadratic models
+\citep{zaheer2020big}.
+In practice, sparse SA has performed comparably 
+or even better than full SA
+on a wide array of tasks \citep{shirzad2023exphormer}.
+
+With this in mind,
+we suspect that sparse attention may improve 
+the overall runtime of \textsc{GCN-SA}
+with minimal performance hit.

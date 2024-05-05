@@ -1,0 +1,94 @@
+\documentclass{article}
+
+% \usepackage{project_440_550}
+% Please submit it as is here, with line numbers.
+% If you'd like a "less draft"-looking version for your website or something after:
+%     \usepackage[final]{project_440_550}   % keeps the footer but kills line numbers,
+    \usepackage[preprint]{project_440_550}   % removes both
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+
+\usepackage[USenglish]{babel}
+                               % and for some reason it makes csqoutes behave differently...
+\usepackage{csquotes}       % smarter handling of quotes (used by biblatex)
+
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{bbm}            
+\usepackage{amsmath}            
+\usepackage{amsthm}            
+\usepackage{graphicx}            
+\usepackage{enumitem}            
+
+
+\usepackage[style=authoryear,maxbibnames=30]{biblatex}
+\addbibresource{refs.bib}
+\renewbibmacro{in:}{}  % drops a silly "In:" from biblatex format
+\let\citet\textcite    % I do this alias because I/others find it more familiar, idk.
+\let\citep\parencite   % biblatex also has a natbib option to make these,
+                       % but makes other changes I don't care about too.
+%\usepackage{natbib}
+
+
+\usepackage[capitalize,noabbrev]{cleveref}
+
+
+\title{Sparse Self-Attention on Graph Convolutional Networks
+for Low Homophily Graphs}
+
+
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+\author{%
+  Anton Chen\\
+  \texttt{contact@antonchen.ca}
+  \And
+  Xiang Xi Chen\\
+  \texttt{xiangxi.chen.ca@gmail.com}
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  \input{src/abstract}
+\end{abstract}
+
+\section{Introduction}
+\input{src/intro}
+
+\section{Methodology}
+\input{src/method}
+
+\section{Experiments}
+\input{src/experiment}
+
+\section{Discussion and Limitations}
+\input{src/discussion}
+
+\section{Conclusion}
+\input{src/conclusion}
+
+% \begin{ack}
+%   \input{src/acknowledgement}
+% \end{ack}
+
+\printbibliography
+
+\appendix
+
+\input{src/appendix}
+
+\end{document}

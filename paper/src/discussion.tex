@@ -1,0 +1,107 @@
+Interpreting our results as-is, while we can conclude that sparse SA
+mechanisms on GCN-SA preserve classification accuracy,
+it cannot be said that runtime has improved dramatically.
+We suspect that these results are a consequence
+of limitations in our experiment design.
+
+Graphs explored in the experiment are 
+relatively small ($ < 5000 $ nodes),
+mostly due to constraints in computational resources.
+With more allocated time, exploration on the
+Long Range Graph Benchmark datasets \citep{dwivedi2022long}
+will illustrate the performance of our model for
+larger low-homophily graphs, ultimately validating our models'
+ability to capture low homophily for large datasets
+at a substantial decrease in runtime. 
+Of course this implies the need for access
+to improved resources (e.g. GPUs).
+
+% This experimentation only consider the reconnected
+% adjacency matrix generation, reducing its runtime using 
+% sparse SA mechanisms. GCN-SA has other transformer blocks,
+% specifically a $ \text{ModifiedTransformerBlock} $, 
+% utilizing multihead self attention with runtime 
+% $\mathcal{O}(n^2q)$ \citep{jiang2024self}. Future exploration with
+% sparse SA on this component may further reduce the runtime,
+% yielding better results.
+
+While sparse SA mechanisms like \textsc{BigBird}, 
+and \textsc{Performer} introduce linear attention, they sustain 
+computation overhead that dominates the per-epoch
+computation time for certain graphs \citep{shirzad2023exphormer}.
+In practice, better computational complexity does not
+directly entail runtime improvements, as a full-attention transformer 
+can be empirically faster than many sparse SA mechanisms for graphs up to 5000 nodes 
+\citep{shirzad2023exphormer}. 
+Again, experimentation on larger datasets may answer this concern.
+
+Another concern is that
+our exploration is limited to only one model (\textsc{GCN-SA})
+due to its high performing accuracy on low homophily graphs. However,
+other models with slightly worse performance (\textsc{IDGL},
+\textsc{H2GCN}, \textsc{CPGNN}) \citep{jiang2024self} 
+may respond better to sparse SA mechanisms. 
+However it is worth noting that how SA is applied to these models
+may be less clean that it is for GCN-SA.
+Furthermore, additional types of sparse SA, outside 
+of \textsc{Exphormer} and \textsc{BigBird} requires
+investigation (e.g. \textsc{Performer}, \textsc{Longformer}).
+Different SA algorithms may improve 
+performance on certain models, while performing
+suboptimally on others. That being said, future 
+studies should consider a wider composite of SA 
+mechanisms being tested on low-homophily datasets.
+
+Finally, learning on larger graphs can 
+propose ethical implications. Social media data
+and other public service networks have
+concerns over user privacy, as ensuring legal
+consent for using individuals' data is essential.
+For large datasets, it is difficult to guarantee
+every individuals' consent is obtained, thus
+raising issues regarding the handling of data
+when consent is not explicitly given or when it is
+impractical to obtain. 
+
+% \begin{itemize}
+%   \item GCN-SA has other transformer blocks,
+%     this experiment was limited only to the reconnect
+%     adjacency matrix generation.
+%     Further exploration with sparse SA on those components
+%     may further reduce the runtime.
+%   \item The graphs in each of the datasets are relatively
+%     small ($ < 10000 $ nodes). 
+%     This doesn't reflect the performance of the models
+%     on large datasets.
+%     With more allotted time,
+%     exploration on datasets such as 
+%     the Long Range Graph Benchmark
+%     \citep{dwivedi2022long}
+%     will demonstrate results for larger graphs.
+%   \item In practice, better computational complexity doesn't 
+%     imply better empirical runtime. here's a quote to describe
+%     why:
+% \begin{quote}
+%   While BigBird and Performer are linear attention
+% mechanisms, they still incur computational overhead that
+% dominates the per-epoch computation time for moderately-
+% sized graphs. The GraphGPS work tackles datasets with
+% graphs of up to 5,000 nodes, a regime in which the full-
+% attention transformer is in fact computationally faster than
+% many sparse linear-attention mechanisms. (exphormer)
+% \end{quote}
+%   \item 
+%     Our exploration was limited only to one base model:
+%     GCN-SA.
+%     Despite being the highest performer,
+%     other models also have close to SOTA performance.
+%     We could try sparse SA on other GCNs, e.g. IDGL.
+%   \item Experiment with more types of sparse SA
+%     (e.g. longformer)
+%   \item learning on larger graphs can be an ethical
+%     problem.
+%     e.g. social media data,
+%     concerns over user privacy,
+%     what is being done with the insights,
+%     etc.
+% \end{itemize}

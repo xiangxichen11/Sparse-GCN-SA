@@ -1,0 +1,50 @@
+It's no secret that
+real-world problems involve graph-structured data.
+An important characteristic of graphs are their 
+degree of \emph{homophily},
+referring to the tendency for nodes with
+similar features to be closely connected \citep{li2023homogcl}.
+For instance, in a professional network
+(a high-homophily graph),
+people tend to be connected with similar individuals
+(e.g. industry, position, years of experience).
+Low-homophily graphs are an important subset of graphs in
+practice, including device IOT graphs and 
+specific social media communities.
+As we explore the literature,
+it becomes evident that learning low-homophily graphs
+has presented challenges 
+in performance and computational complexity.
+
+\subsection{Related Works}
+\input{src/related}
+
+\subsection{Problem Statement}
+
+In this paper we address the problem of balancing
+high performance and computational efficiency
+for low-homophily graph learning.
+We are particularly interested in 
+bridging the gap between the literature of
+sparse SA for GTs (e.g. \textsc{Exphormer}),
+and the bleeding edge performance of \textsc{GCN-SA}.
+
+\subsection{Our Contributions}
+
+We offer a focused study of sparse SA
+techniques applied to the \textsc{GCN-SA} architecture.
+We perform experiments to determine 
+whether GCN-SA, modified 
+with various sparse SA mechanisms,
+improves runtime while
+maintaining similar classification accuracy.
+We compare 2 baselines GCN and GCN-SA against 
+2 GCN-SA models modified with sparse SA 
+(\textsc{BigBird}, \textsc{Exphormer}).
+Analysis is performed on 8 datasets of varying homophily.
+% Our results demonstrate the ability for GCN-SA to learn 
+% on \emph{large} low-homophily graphs, 
+% which has broad practical applications.
+% The source code for this project
+% is hosted at
+% \texttt{github.com/chenanton/sparse-gcn-sa}.

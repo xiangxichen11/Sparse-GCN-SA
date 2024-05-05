@@ -1,0 +1,76 @@
+Self-Attention Empowered Graph Convolutional Network for Structure Learning and Node Embedding
+
+ABSTRACT:
+- GNNs cannot capture long-range dependencies between nodes/edges, especially
+  in low-homophilic graphs
+  - E.g. devices in IOT tend to have neighbors of different types (e.g. phone,
+    smart watch, laptop)
+- GCN-SA consists of 2 upgrades:
+  1. edges: self-attention to learn structure (correlation/neighbors between
+  nodes): MHSA to learn long-range dependencies in the form of a new adjacency
+  matrix
+  2. nodes: add node features back into the transformer block
+
+
+TASK:
+- given graph and 
+
+HOW THE MODEL WORKS:
+1. MHSA to compute attention for each node
+2. knn/minimimum threshold to select new neighbors for each node. 
+  - these 2 steps create new graph
+3. use new graph + node embeddings as features for downstream prediction
+
+TRANSFORMER layer:
+1. MHSA sublayer
+- residual connection + layer normalization
+2. fully connected sublayer
+
+LIMITATIONS
+- (?) long-range dependencies are limited by window size
+- window size is limited by self-attention mechanism
+  - e.g. an n x n window is an n^2 sequence, requiring n^4 time for
+    self-attention (?)
+
+
+Rethinking Attention with Performers (SPARSE ATTENTION)
+
+- sparse attention good to reduce time/space complexity
+- many ways to determine sparsity (e.g. manually select, optimization, etc)
+- limitations:
+  - require efficient sparse matrix operations
+  - don't have rigorous theoretical guarantees
+  - requires more self-attention layers
+- solution: performer
+  - linear-scaling attention
+
+
+OUR CONTRIBUTION:
+- context: graph representation learning is a subfield of ML concerned with
+  graph-structured data, and learning from it. think of social networks,
+  websites linked to each other, scientific papers citing each other.
+- an interesting property of such graphs is homophily: how similar neighboring
+  nodes are to each other. highly homophilic graphs tend to have nodes with similar
+  features be closer to each other (e.g. friends tend to be similar age,
+  interests, etc.).
+- problem space: for low-homophily graph-data, current GNN approachs fail to
+  capture the long-range dependencies between nodes
+  - this is important because low-h graphs definitely do exists, e.g. devices
+    on an IOT network. people tend to own a variety of devices, not just 10 of
+    the same phone for examples.
+- approach by Jiang et al.: use self-attention mechanism to capture long-range
+  dependencies. shown to be effective on low-h graphs
+- self-attention mechanism causes increased computational complexity.
+- we don't require the "full" self-attention mechanisms to adequately capture
+  long-range dependecies:
+
+EXPERIMENT DESIGN:
+- use GCN-SA as baseline
+- compare it to GCN-SA modified with different types of self-attention
+  tweaks which improve performance. mostly focusing on sparse attention
+  methods
+
+SIMILAR WORK:
+- https://ieeexplore.ieee.org/abstract/document/9399811 (Sparse GAT)
+  - problem: does not capture long-range dependencies since each node only
+    considers neighbors

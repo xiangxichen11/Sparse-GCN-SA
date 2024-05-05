@@ -1,0 +1,30 @@
+The main limitations of GCN-SA are:
+- Multiple transformer blocks increase computational complexity
+- Unbalanced number of new neighbours when minimum threshold method is used
+- Not significant for homophilic graphs
+
+
+Potential improvements:
+- Dynamic threshold neighbour screening
+	- Instead of minimum threshold method, apply dynamic techniques based on the characteristics
+	  of the graph
+	- Can help balance new neighbours and improve model stability
+- Sparse Transformer Blocks:
+	- Current implementation utilizes multiple transformer blocks that increase computational 	  complexity
+	- Utilize pruning of unimportant connections, low level factorization, or attention sparsity 	  patterns to the Nodes to reduce the number of computations needed
+- Regularization Techniques:
+	- Homophily regularization:
+		- Apply regularization turn in graph learning that encourages similar nodes to be 		  connected
+
+Other thoughts:
+- Overall we should select to improve either the edge portion (dealing with the neighbours and building the new connected graph) or the transformer portion (like try different regularizations or dropouts or normalization, residual connection...)
+- Stuff dealing with scalability and graph balancing seems a lot harder compared to just trying to decrease the complexity of the transformers and improve performance.
+- I think we should focus on this and see what small changes we can make, even if it's attempting to crease sparse transformer blocks by simply adding another stage of dropout.
+
+
+Current Thoughts:
+- Instead of making improvements for future use, we should focus on optimization
+- Most of the concepts that we have learned in class has already been used (eg. Dropout, normalization...) so it will be difficult to make anymore advancements with them.
+- However, the model has slightly worse runtimes when compared to other graph models (See figure 6)
+- In this case, we should find a way to reduce complexity so it runs in a similar manner as GCN.
+- This will probably come from reducing the complexity of one of the self-attention layers, or utilizing something like sampling to reduce dimensionality for the CNN.

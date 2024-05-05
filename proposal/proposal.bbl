@@ -1,0 +1,73 @@
+\begin{thebibliography}{10}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Beltagy et~al.(2020)Beltagy, Peters, and Cohan]{beltagy2020longformer}
+Beltagy, I., Peters, M.~E., and Cohan, A.
+\newblock Longformer: The long-document transformer.
+\newblock \emph{arXiv preprint arXiv:2004.05150}, 2020.
+
+\bibitem[Choromanski et~al.(2020)Choromanski, Likhosherstov, Dohan, Song, Gane,
+  Sarlos, Hawkins, Davis, Mohiuddin, Kaiser, et~al.]{choromanski2020rethinking}
+Choromanski, K., Likhosherstov, V., Dohan, D., Song, X., Gane, A., Sarlos, T.,
+  Hawkins, P., Davis, J., Mohiuddin, A., Kaiser, L., et~al.
+\newblock Rethinking attention with performers.
+\newblock \emph{arXiv preprint arXiv:2009.14794}, 2020.
+
+\bibitem[Fan et~al.(2023)Fan, Gong, and Wu]{fan2023markov}
+Fan, X., Gong, M., and Wu, Y.
+\newblock Markov clustering regularized multi-hop graph neural network.
+\newblock \emph{Pattern Recognition}, 139:\penalty0 109518, 2023.
+
+\bibitem[Hamilton et~al.(2017)Hamilton, Ying, and
+  Leskovec]{hamilton2017representation}
+Hamilton, W.~L., Ying, R., and Leskovec, J.
+\newblock Representation learning on graphs: Methods and applications.
+\newblock \emph{arXiv preprint arXiv:1709.05584}, 2017.
+
+\bibitem[Jiang et~al.(2024)Jiang, Liu, Su, and Wu]{jiang2024self}
+Jiang, M., Liu, G., Su, Y., and Wu, X.
+\newblock Self-attention empowered graph convolutional network for structure
+  learning and node embedding.
+\newblock \emph{arXiv preprint arXiv:2403.03465}, 2024.
+
+\bibitem[Li et~al.(2023)Li, Wang, Xiong, and Lai]{li2023homogcl}
+Li, W.-Z., Wang, C.-D., Xiong, H., and Lai, J.-H.
+\newblock Homogcl: Rethinking homophily in graph contrastive learning.
+\newblock In \emph{Proceedings of the 29th ACM SIGKDD Conference on Knowledge
+  Discovery and Data Mining}, pp.\  1341--1352, 2023.
+
+\bibitem[Lim et~al.(2021)Lim, Hohne, Li, Huang, Gupta, Bhalerao, and
+  Lim]{lim2021large}
+Lim, D., Hohne, F., Li, X., Huang, S.~L., Gupta, V., Bhalerao, O., and Lim,
+  S.~N.
+\newblock Large scale learning on non-homophilous graphs: New benchmarks and
+  strong simple methods.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  34:\penalty0 20887--20902, 2021.
+
+\bibitem[Pei et~al.(2020)Pei, Wei, Chang, Lei, and Yang]{pei2020geom}
+Pei, H., Wei, B., Chang, K. C.-C., Lei, Y., and Yang, B.
+\newblock Geom-gcn: Geometric graph convolutional networks.
+\newblock \emph{arXiv preprint arXiv:2002.05287}, 2020.
+
+\bibitem[Zaheer et~al.(2020)Zaheer, Guruganesh, Dubey, Ainslie, Alberti,
+  Ontanon, Pham, Ravula, Wang, Yang, et~al.]{zaheer2020big}
+Zaheer, M., Guruganesh, G., Dubey, K.~A., Ainslie, J., Alberti, C., Ontanon,
+  S., Pham, P., Ravula, A., Wang, Q., Yang, L., et~al.
+\newblock Big bird: Transformers for longer sequences.
+\newblock \emph{Advances in neural information processing systems},
+  33:\penalty0 17283--17297, 2020.
+
+\bibitem[Zhu et~al.(2020)Zhu, Yan, Zhao, Heimann, Akoglu, and
+  Koutra]{zhu2020beyond}
+Zhu, J., Yan, Y., Zhao, L., Heimann, M., Akoglu, L., and Koutra, D.
+\newblock Beyond homophily in graph neural networks: Current limitations and
+  effective designs.
+\newblock \emph{Advances in neural information processing systems},
+  33:\penalty0 7793--7804, 2020.
+
+\end{thebibliography}

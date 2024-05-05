@@ -1,0 +1,28 @@
+TODO LIST
+- write paper
+  - methodology
+    - GCN-SA overview
+      - A*
+      - modified transformer
+      - how A, A*, and H are used in the model
+    - sparse SA overview
+      - what SA is, and what sparse SA 
+      - list some examples
+    - integrating GCN-SA with sparse SA
+      1. modifying A* s.t. A* is n x d instead by replacing
+      the SA with sparse SA
+      2. sparsify A so it's n x d. we need to find
+      a method to do this
+      3. replace the modified transformer block with
+      the sparse SA
+      4. update the rest of the model so the dimensions match up
+  - experiment
+    - copy another paper's structure (e.g. exphormer)
+    - datasets
+    - models
+    - tables
+  - results
+  - go through writing.pdf bullet points one by one.
+
+- perform experiment
+  - use GPU

@@ -1,0 +1,85 @@
+\subsubsection{Graph Convolutional Networks}
+
+Graph convolutional networks (GCNs)
+are considered the most promising
+architecture for graph learning in practice
+\citep{hamilton2017representation}.
+Despite this,
+modern GCNs perform poorly on low-homophily graphs,
+including \textsc{Geom-GCN} \citep{pei2020geom}
+and \textsc{H\textsubscript{2}GCN} \citep{zhu2020beyond}.
+This is due to a sole reliance on
+feature representations that only consider
+adjacent nodes (\emph{message passing}),
+failing to capture long-range correlations \citep{jiang2024self}.
+
+\subsubsection{GCNs with Self-Attention}
+
+\citet{jiang2024self} account for long-range correlations
+by incorporating SA with GCNs in \textsc{GCN-SA},
+resulting in exceptional performance on low-homophily graphs.
+On 3 low-homophily WebKB graph datasets,
+$ \textsc{GCN-SA} $'s node classification accuracy
+($90.8\pm4.5, 89.7\pm2.6, 91.5\pm2.5$)
+significantly outperforms baseline GCN
+($60.8\pm5.2, 61.1\pm5.7, 62.3\pm6.4$)
+and $ 8 $ other GNNs \citep{jiang2024self}.
+
+Despite their success,
+\textsc{GCN-SA} suffers from poor runtime complexity
+caused by its ``dense'' full SA mechanism.
+Full SA necessitates $ \mathcal{O}(n^2) $ operations 
+for $ n $ nodes.
+This is empirically evident,
+where running time for \textsc{GCN-SA} 
+is significantly longer than \textsc{GCN}
+($10^{2\pm 0.5}$ log-seconds 
+v.s. $ 10^{0.2\pm 0.1} $ log-seconds
+for $ 500 $ epochs on 5 datasets)
+\citep{jiang2024self}.
+It is worth mentioning that the size of these datasets
+are relatively small ($n = 2708, 3327, 19717, 2277, 5201$), 
+a far cry from larger 
+low-homophily graphs seen in practice \citep{lim2021large}.
+
+\subsubsection{Graph Transformers}
+
+There has been concurrent effort to explore self-attention
+on graphs in graph transformers (GTs).
+Notably, \citet{rampavsek2022recipe}
+propose \textsc{GraphGPS}, a recipe that
+involves combining local message passing and a global attention 
+mechanism --- very similar
+to the approach \citet{jiang2024self} take.
+
+In particular, we'd like to focus on the efforts made to improve
+the poor quadratic scaling of graph transformers.
+The central approach is sparse SA mechanisms,
+which compute a sparse subset of attention scores in 
+less than quadratic time (usually linear).
+\textsc{BigBird} \citep{zaheer2020big}
+and \textsc{Performer} \citep{choromanski2020rethinking}
+are general-purpose sparse SA mechanisms
+that have been applied in a graph context.
+Graph-specific sparse SA mechanisms have also been developed,
+most notably \textsc{Exphormer}
+\citep{shirzad2023exphormer},
+leveraging \emph{expander graphs}
+to build graph transformers that approximate full SA
+efficiently.
+
+\citet{kong2023goat}'s GT-based \textsc{GOAT} architecture 
+illustrate SA to improve performance on low-homophily graphs,
+but do not explore sparse SA approaches.
+They implement their own $ k $-means-based
+dimensionality reduction approach to achieve linear
+SA score computation.
+
+Unlike \textsc{GCNs}, the success of 
+attention in GTs has been less clear.
+Despite the purported advantages of GT networks
+over GNNs (e.g. oversmoothing, limited expressivity),
+the accuracy of GTs have often lagged behind their
+GNN counterparts \citep{shirzad2023exphormer, kong2023goat}.
+\citet{shirzad2023exphormer} even suggest that for some datasets,
+it is better to avoid using attention at all.

@@ -1,0 +1,55 @@
+Notation will mostly follow \citet{jiang2024self}
+and should be rather unsurprising.
+Let $ G = (V, E) $ be an undirected graph,
+where $ V $ and $ E $ are the sets of nodes
+and edges respectively.
+We define $ n = |V| $ to be the number of nodes
+in the graph.
+Let $ \mathbf{A} \in \mathbb{R}^{n \times n} $
+be the (symmetric) adjacency matrix of $ G $,
+where $ A_{ij} 
+=\mathbbm{1} \left\{ e_{ij} \in E \right\} $.
+Denote 
+$ \mathbf{X} = 
+\begin{bmatrix}
+  \mathbf{x}_1& \cdots & \mathbf{x}_n
+\end{bmatrix}^\top
+\in \mathbb{R}^{n\times d} $
+as our feature matrix,
+where $ \mathbf{x}_i \in \mathbb{R}^d$
+corresponds to the features of node $ v_i \in V $.
+Finally, for a set of classes 
+$ [c] = \left\{ 1, \cdots, c \right\} $
+and a subset of labelled nodes
+$ V_{\text{lab}} \subset V $,
+$ \mathbf{y}_{\text{lab}} \in [c]^{|V_{\text{lab}}|} $
+are the corresponding labels.
+
+Our inference task is to predict the labels of the unlabeled nodes
+given positional and semantic information
+($\mathbf{A}$ and $\mathbf{X}$ respectively).
+More formally,
+find the posterior distribution
+$ 
+    \mathbf{y}
+    \mid \mathbf{X}, \mathbf{A}, \mathbf{y}_{\text{lab}}
+$
+for completed label vector $ \mathbf{y} \subset [c]^n $.
+
+Another important definition to consider is the \emph{homophily ratio}
+of a graph:
+\begin{definition}[Homophily Ratio]
+  For graph $ G = (V, E) $,
+  the homophily ratio $ h $ is 
+  \begin{flalign*}
+    h = \frac{|\{(v_i,v_j) \in E\colon y_i = y_j\}|}{|E|}.
+  \end{flalign*}
+\end{definition}
+
+As $h \to 1 $, 
+$ G $ becomes completely homophilous (high-homophily)
+and as $h \to 0 $, 
+$ G $ becomes completely heterophilous (low-homophily) 
+\citep{zhu2020beyond}.
+For our experiments, we note the homophily ratio
+corresponding to each graph.

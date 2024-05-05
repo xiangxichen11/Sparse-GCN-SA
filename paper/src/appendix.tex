@@ -1,0 +1,64 @@
+\section{Dataset Descriptions} \label{app:info}
+This section will discuss the graph
+datasets used, and define the homophily ratio classifier.
+
+Of the $ 8 $ datasets used to validate the
+proposed sparse SA \textsc{GCA-SA}-based models,
+$ 3 $ are citation networks (Cora, Citeseer, Pubmed), 
+$ 2 $ are Wikipedia
+networks (Chameleon, Squirrel), 
+and the last $ 3 $ are 
+WebKB networks (Cornell, Texax, Wisconsin) (\cite{jiang2024self}).
+
+The nodes in the citation graphs correspond to papers, each
+containing an academic topic as a label. Edges are citations between
+papers with each node. These datasets have a significant amount of 
+does due to the amount of publications, and with certain paper
+having hundreds of thousands of citations of them, the number 
+of edges are seamingly large as well.
+
+Nodes in the Wikipedia graphs are Wikipedia pages,
+and edges refer to reciprocal links between pages. 
+The interconnectedness of these graphs are extremely 
+large because of the links between each type of squirrel
+and chameleon.  
+
+Finally, the WebKB datasets were collected
+from each universitys' respective computer science
+department. Nodes represent web pages and edges
+are hyperlinks between web pages. These have the lowest
+number of nodes as the webpages are relatively small
+compared to Pubmed or Wikipedia. Here is a summary of all
+the datasets from (\cite{jiang2024self}):
+
+
+\begin{table}
+  \caption{Summary of the datasets utilized in our experiment.}
+  \label{tab:sample}
+  \centering
+  \begin{tabular}{lllllllll}
+    \toprule
+    \textbf{Datasets} &
+    Cora & Citese. & Pubmed & Chamele. & 
+    Squirr. & Cornell. & Texas & Wiscon. \\
+    \midrule
+    \textsc{Hom.ratio \textit{h}} &
+    0.81 & 0.74 & 0.8 & 0.23 &
+    0.22 & 0.3 & 0.11 & 0.21 \\
+    \textsc{\# Nodes} &
+    2708 & 3327 & 19717 & 2277 &
+    5201 & 183 & 183 & 251 \\
+    \textsc{\# Edges} &
+    5429 & 4732 & 44338 & 31421 &
+    198493 & 295 & 309 & 499 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Based on the definition of the homophily ratio, citation networks
+have the highest degree of homophily while 
+Wikipedia and WebKB networks display low homophily. 
+In the experimentation, we wish to preserve the predictive
+accuracy of the low homophily networks while improving
+the runtime through sparse SA mechanisms. 
+

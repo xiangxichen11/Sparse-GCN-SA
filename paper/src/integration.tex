@@ -1,0 +1,29 @@
+This section describes the central contribution of the paper:
+replacing the expensive SA computations in \textsc{GCN-SA}
+with sparse equivalents.
+
+Observe that the runtime of 
+$ \text{StructureLearning}$ 
+is $ \mathcal{O}(n^2d) $ due to the full SA mechanism.
+We can reduce the runtime from quadratic (in $ n $)
+to linear by replacing $ \text{StructureLearning} $
+with a sparse SA mechanism.
+
+\text{StructureLearning} will have 
+better runtime complexity.
+For instance,
+\textsc{Exphormer}'s
+expander attention and global attention
+yield a runtime of 
+$\mathcal{O}(nd)$
+(we exclude \textsc{Exphormer}'s local attention
+as we are only concerned with long-range dependencies).
+
+Downstream in the model, $ \mathbf{A}^* $
+is only used once more to compute $ \mathbf{H}_{A^*} $
+As $ \mathbf{A}^* $ computed with the full SA
+and $ k $NN + minimum-threshold approach is sparse
+($\mathcal{O}(1)$ non-zero entries per row),
+the computation of $ \mathbf{H}_{A^*} $
+already occurs in $ \mathcal{O}(nq) $
+and remains unchanged with our modified architecture.

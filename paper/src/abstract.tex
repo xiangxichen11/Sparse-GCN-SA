@@ -1,0 +1,35 @@
+Graph convolutional networks (GCNs)
+are the dominant architectures for 
+representation learning on graph-structured data.
+Despite this, modern GCNs
+face difficulty learning \emph{low-homophily} graphs,
+an important class of graphs in application.
+GCNs with self-attention (\textsc{GCN-SA})
+are a recent breakthrough
+offering exceptional performance on low-homophily graphs:
+SOTA classification accuracy on 8 graph datasets
+of varying homophily,
+outperforming other competitive models 
+by a wide margin on low-homophily graphs.
+Responsible for this improvement is self-attention (SA),
+allowing the model to capture long-range dependencies between nodes.
+However, \textsc{GCN-SA} is limited by poor
+runtime scaling of its SA mechanisms,
+restricting the model to small graphs.
+Advancements in the sister field of graph transformers (GTs)
+leverage \emph{sparse} 
+SA mechanisms on graphs (e.g. \textsc{Exphormer})
+to address this poor scaling.
+In this paper we bridge the gap between 
+advancements in sparse SA 
+with the exceptional performance of GCN-SA
+on low homophily graphs.
+We propose that sparse SA mechanisms replace 
+GCN-SA's attention mechanisms 
+to not only reduce runtime complexity from quadratic to linear,
+but to also maintain similar classification accuracy.
+We perform experiments on 8 graph datasets
+of varying degrees of homophily
+with $ 2 $ modified GCN-SA-based models,
+vanilla GCN-SA, 
+and a GCN baseline.

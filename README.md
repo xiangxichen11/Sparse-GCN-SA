@@ -1,1 +1,2 @@
-# Sparse-GCN-SA
+# cpsc440-project
+cpsc 440 project
